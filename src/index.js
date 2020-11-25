@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { createStore } from "redux";
+import {Provider} from 'react-redux';
 //named import createStore
 //store uses reducer
 //reducer contains 2 arguments 1.state of whole Store 2. action object
@@ -28,5 +29,10 @@ let rootReducer = (state = iniState, action) => {
 
 let store = createStore(rootReducer);
 console.log("The store is ", store);
+console.log("The current state of application/storte is ", store.getState());
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <Provider store={store}>
+  <App />
+  </Provider>
+  , document.getElementById("root"));
